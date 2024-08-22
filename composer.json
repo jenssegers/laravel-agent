@@ -4,7 +4,6 @@
     "keywords": ["laravel", "useragent", "agent", "user agent", "browser", "platform", "mobile", "desktop"],
     "homepage": "https://github.com/fakeeh/agent",
     "license" : "MIT",
-    "version": "2.6",
     "authors": [
         {
             "name": "Jens Segers",
