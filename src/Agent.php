@@ -4,10 +4,20 @@ namespace Jenssegers\Agent;
 
 use BadMethodCallException;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
-use Mobile_Detect;
+use Detection\MobileDetect;
 
-class Agent extends Mobile_Detect
+class Agent extends MobileDetect
 {
+    /**
+     * A type for the version() method indicating a string return value.
+     */
+    private const VERSION_TYPE_STRING = 'text';
+
+    /**
+     * A type for the version() method indicating a float return value.
+     */
+    private const VERSION_TYPE_FLOAT = 'float';
+    
     /**
      * List of desktop devices.
      * @var array
@@ -76,6 +86,7 @@ class Agent extends Mobile_Detect
         'Coc Coc' => 'coc_coc_browser/[VER]',
     ];
 
+
     /**
      * @var CrawlerDetect
      */
@@ -106,7 +117,7 @@ class Agent extends Mobile_Detect
         return $rules;
     }
 
-    public function getRules()
+    public function getRules(): array
     {
         if ($this->detectionType === static::DETECTION_TYPE_EXTENDED) {
             return static::getDetectionRulesExtended();
@@ -127,7 +138,12 @@ class Agent extends Mobile_Detect
         return static::$crawlerDetect;
     }
 
-    public static function getBrowsers()
+    /**
+     * Returns an array of all known browsers, including any additional browsers that have been defined.
+     *
+     * @return array An array of browser detection rules.
+     */
+    public static function getBrowsers(): array
     {
         return static::mergeRules(
             static::$additionalBrowsers,
@@ -135,7 +151,12 @@ class Agent extends Mobile_Detect
         );
     }
 
-    public static function getOperatingSystems()
+    /**
+     * Returns an array of all known operating systems, including any additional operating systems that have been defined.
+     *
+     * @return array An array of operating system detection rules.
+     */
+    public static function getOperatingSystems(): array
     {
         return static::mergeRules(
             static::$operatingSystems,
@@ -143,6 +164,11 @@ class Agent extends Mobile_Detect
         );
     }
 
+    /**
+     * Returns an array of all known operating systems, including any additional operating systems that have been defined.
+     *
+     * @return array An array of operating system detection rules.
+     */
     public static function getPlatforms()
     {
         return static::mergeRules(
@@ -151,12 +177,22 @@ class Agent extends Mobile_Detect
         );
     }
 
+    /**
+     * Returns an array of all known desktop devices.
+     *
+     * @return array An array of desktop device detection rules.
+     */
     public static function getDesktopDevices()
     {
         return static::$desktopDevices;
     }
 
-    public static function getProperties()
+    /**
+     * Returns an array of all known properties, including any additional properties that have been defined.
+     *
+     * @return array An array of property detection rules.
+     */
+    public static function getProperties(): array
     {
         return static::mergeRules(
             static::$additionalProperties,
@@ -331,7 +367,7 @@ class Agent extends Mobile_Detect
         return "other";
     }
 
-    public function version($propertyName, $type = self::VERSION_TYPE_STRING)
+    public function version($propertyName, $type = self::VERSION_TYPE_STRING): float
     {
         if (empty($propertyName)) {
             return false;
@@ -411,5 +447,32 @@ class Agent extends Mobile_Detect
         $key = substr($name, 2);
 
         return $this->matchUAAgainstKey($key);
+    }
+
+    /**
+     * Some detection rules are relative (not standard),
+     * because of the diversity of devices, vendors and
+     * their conventions in representing the User-Agent or
+     * the HTTP headers.
+     *
+     * This method will be used to check custom regexes against
+     * the User-Agent string.
+     *
+     * @param string $regex
+     * @param string|null $userAgent
+     * @return bool
+     *
+     * @todo: search in the HTTP headers too.
+     */
+    public function match(string $regex, string $userAgent = null): bool
+    {
+        $match = (bool) preg_match(sprintf('#%s#is', $regex), $userAgent, $matches);
+        // If positive match is found, store the results for debug.
+        if ($match) {
+            $this->matchingRegex = $regex;
+            $this->matchesArray = $matches;
+        }
+
+        return $match;
     }
 }

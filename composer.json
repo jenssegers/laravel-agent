@@ -1,9 +1,10 @@
 {
-    "name": "jenssegers/agent",
+    "name": "al-saloul/agent",
     "description": "Desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
     "keywords": ["laravel", "useragent", "agent", "user agent", "browser", "platform", "mobile", "desktop"],
-    "homepage": "https://github.com/jenssegers/agent",
+    "homepage": "https://github.com/fakeeh/agent",
     "license" : "MIT",
+    "version": "2.6",
     "authors": [
         {
             "name": "Jens Segers",
