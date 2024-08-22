@@ -15,7 +15,7 @@ Installation
 Install using composer:
 
 ```bash
-composer require jenssegers/agent
+composer require al-saloul/agent
 ```
 
 Laravel (optional)
