@@ -9,6 +9,10 @@
         {
             "name": "Jens Segers",
             "homepage": "https://jenssegers.com"
+        },
+        {
+            "name": "Mohammed Al Saloul",
+            "email": "eng.alsaloul.mohammed@gmail.com"
         }
     ],
     "require": {
