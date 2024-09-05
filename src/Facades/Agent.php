@@ -1,6 +1,6 @@
 <?php
 
-namespace Jenssegers\Agent\Facades;
+namespace Alsaloul\Agent\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

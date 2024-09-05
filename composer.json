@@ -1,18 +1,21 @@
 {
-    "name": "jenssegers/agent",
+    "name": "al-saloul/agent",
     "description": "Desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
     "keywords": ["laravel", "useragent", "agent", "user agent", "browser", "platform", "mobile", "desktop"],
-    "homepage": "https://github.com/jenssegers/agent",
+    "homepage": "https://github.com/fakeeh/agent",
     "license" : "MIT",
     "authors": [
         {
             "name": "Jens Segers",
             "homepage": "https://jenssegers.com"
+        },
+        {
+            "name": "Mohammed Al Saloul",
+            "email": "eng.alsaloul.mohammed@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.6",
-        "mobiledetect/mobiledetectlib": "^2.7.6",
         "jaybizzle/crawler-detect": "^1.2"
     },
     "require-dev": {
@@ -21,7 +24,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jenssegers\\Agent\\": "src/"
+            "Alsaloul\\Agent\\": "src/"
         }
     },
     "extra": {
@@ -30,10 +33,10 @@
         },
         "laravel": {
             "providers": [
-                "Jenssegers\\Agent\\AgentServiceProvider"
+                "Alsaloul\\Agent\\AgentServiceProvider"
             ],
             "aliases": {
-                "Agent": "Jenssegers\\Agent\\Facades\\Agent"
+                "Agent": "Alsaloul\\Agent\\Facades\\Agent"
             }
         }
     },
