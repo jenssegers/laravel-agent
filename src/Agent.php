@@ -4,8 +4,6 @@ namespace Alsaloul\Agent;
 
 use BadMethodCallException;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
-use Detection\MobileDetect;
-
 class Agent extends MobileDetect
 {
     /**
