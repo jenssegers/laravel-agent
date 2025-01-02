@@ -392,6 +392,11 @@ class Agent extends MobileDetect
 
                 $propertyPattern = str_replace('[VER]', self::VER, $propertyMatchString);
 
+                // preg_match: Passing null to parameter #2 ($subject) of type string is deprecated
+                if (is_null($propertyPattern) {
+                    continue;
+                }
+
                 // Identify and extract the version.
                 preg_match(sprintf('#%s#is', $propertyPattern), $this->userAgent, $match);
 
