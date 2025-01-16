@@ -7,7 +7,7 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 class Agent extends MobileDetect
 {
     /**
-     * A type for the version() method indicating a string return value.
+ * A type for the version() method indicating a string return value.
      */
     private const VERSION_TYPE_STRING = 'text';
 
@@ -393,7 +393,7 @@ class Agent extends MobileDetect
                 $propertyPattern = str_replace('[VER]', self::VER, $propertyMatchString);
 
                 // preg_match: Passing null to parameter #2 ($subject) of type string is deprecated
-                if (is_null($propertyPattern) {
+                if (is_null($propertyPattern)) {
                     continue;
                 }
 
