@@ -1,12 +1,11 @@
 <?php
 
-namespace Jenssegers\Agent;
+namespace Alsaloul\Agent;
 
 use BadMethodCallException;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
-use Mobile_Detect;
 
-class Agent extends Mobile_Detect
+class Agent extends MobileDetect
 {
     /**
      * List of desktop devices.
